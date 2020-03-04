@@ -7,15 +7,15 @@ import (
 	"time"
 )
 
-var G_Int int64
-var WG sync.WaitGroup
-var ThreadCnt int
+var gInt int64
+var wg sync.WaitGroup
+var threadCnt int
 
 // AtomicOpr XXX
 func AtomicOpr() {
 	var tempInt int64
 	for {
-		if ThreadCnt == 50 {
+		if threadCnt == 50 {
 			break
 		}
 
@@ -23,8 +23,8 @@ func AtomicOpr() {
 	}
 
 	for {
-		tempInt = atomic.LoadInt64(&G_Int)
-		res := atomic.CompareAndSwapInt64(&G_Int, tempInt, tempInt+1)
+		tempInt = atomic.LoadInt64(&gInt)
+		res := atomic.CompareAndSwapInt64(&gInt, tempInt, tempInt+1)
 
 		if res == true {
 			fmt.Println(tempInt, " try to CAS : ", res)
@@ -34,21 +34,21 @@ func AtomicOpr() {
 		time.Sleep(time.Nanosecond * 10)
 	}
 
-	WG.Done()
+	wg.Done()
 }
 
 func main() {
-	G_Int = 0
-	ThreadCnt = 0
+	gInt = 0
+	threadCnt = 0
 
 	for i := 0; i < 50; i++ {
 		go AtomicOpr()
-		WG.Add(1)
+		wg.Add(1)
 
-		ThreadCnt++
-		fmt.Println("ThreadCnt is :", ThreadCnt)
+		threadCnt++
+		fmt.Println("threadCnt is :", threadCnt)
 	}
 
-	WG.Wait()
+	wg.Wait()
 	time.Sleep(time.Second * 2)
 }
