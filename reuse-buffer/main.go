@@ -13,7 +13,9 @@ import (
 
 var testStr1 = strings.Repeat("abc", 10000)
 var testStr2 = strings.Repeat("cde", 10000)
-var testStr = fmt.Sprintf("%s\n%s\n%s\n%s", testStr1, testStr2, testStr1, testStr2)
+var testStr3 = strings.Repeat("def", 10000)
+var testStr4 = strings.Repeat("efg", 10000)
+var testStr = fmt.Sprintf("%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s", testStr1, testStr2, testStr3, testStr4, testStr1, testStr2, testStr3, testStr4)
 var strBytesLen = len(testStr)
 
 func readBytesByLine() {
@@ -91,6 +93,6 @@ func readFromBuffer() {
 }
 
 func main() {
-	fmt.Println("AllocsPerRun readBytesByLine ", testing.AllocsPerRun(1, readBytesByLine))
-	fmt.Println("AllocsPerRun readFromBuffer ", testing.AllocsPerRun(1, readFromBuffer))
+	fmt.Println("AllocsPerRun readBytesByLine ", testing.AllocsPerRun(100, readBytesByLine))
+	fmt.Println("AllocsPerRun readFromBuffer ", testing.AllocsPerRun(100, readFromBuffer))
 }
