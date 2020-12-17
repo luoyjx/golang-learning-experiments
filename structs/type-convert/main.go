@@ -25,6 +25,7 @@ func main() {
 
 	var a *A
 
+	// will panic
 	err = json.Unmarshal(bs, a)
 
 	if err != nil {
