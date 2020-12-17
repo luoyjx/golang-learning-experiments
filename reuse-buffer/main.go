@@ -2,6 +2,7 @@ package main
 
 import (
 	"bufio"
+	"bytes"
 	"fmt"
 	"io"
 	"io/ioutil"
@@ -13,22 +14,30 @@ import (
 var testStr1 = strings.Repeat("abc", 10000)
 var testStr2 = strings.Repeat("cde", 10000)
 var testStr = fmt.Sprintf("%s\n%s\n%s\n%s", testStr1, testStr2, testStr1, testStr2)
+var strBytesLen = len(testStr)
 
 func readBytesByLine() {
 	rc := ioutil.NopCloser(strings.NewReader(testStr))
+	newBuf := bytes.NewBuffer(make([]byte, 0, strBytesLen))
 	reader := bufio.NewReader(rc)
 
-	loopCount := 0
-
+	c := 0
 	for {
-		_, err := reader.ReadBytes('\n')
+		bs, err := reader.ReadBytes('\n')
 		if err == io.EOF {
+			if len(bs) > 0 {
+				c += len(bs)
+				newBuf.Write(bs)
+			}
+
 			rc.Close()
 			break
 		}
 
-		loopCount++
+		c += len(bs)
+		newBuf.Write(bs)
 	}
+	// fmt.Println(string(newBuf.Bytes()) == testStr)
 }
 
 var bufioReaderPool sync.Pool
@@ -54,27 +63,34 @@ var bufPool = sync.Pool{
 
 func readFromBuffer() {
 	rc := ioutil.NopCloser(strings.NewReader(testStr))
+	newBuf := bytes.NewBuffer(make([]byte, 0, strBytesLen))
 	reader := newBufioReader(rc)
-
 	buf := bufPool.Get().([]byte)
 
-	loopCount := 0
-
 	for {
-		_, err := reader.Read(buf)
+		n, err := reader.Read(buf)
 
 		if err == io.EOF {
+			if n > 0 {
+				newBuf.Write(buf[:n])
+			}
+			rc.Close()
 			break
 		}
 
-		loopCount++
+		_, err = newBuf.Write(buf[:n])
+
+		if err != nil {
+			panic(err)
+		}
 	}
 
 	putBufioReader(reader)
 	bufPool.Put(buf)
+	// fmt.Println(string(newBuf.Bytes()) == testStr)
 }
 
 func main() {
-	fmt.Println("AllocsPerRun readBytesByLine ", testing.AllocsPerRun(100, readBytesByLine))
-	fmt.Println("AllocsPerRun readFromBuffer ", testing.AllocsPerRun(100, readFromBuffer))
+	fmt.Println("AllocsPerRun readBytesByLine ", testing.AllocsPerRun(1, readBytesByLine))
+	fmt.Println("AllocsPerRun readFromBuffer ", testing.AllocsPerRun(1, readFromBuffer))
 }
