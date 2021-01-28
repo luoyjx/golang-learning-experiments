@@ -1,8 +1,11 @@
 package main
 
 import (
+	"encoding/binary"
 	"fmt"
 	"net"
+
+	"github.com/signalsciences/ipv4"
 )
 
 var privateIPBlocks []*net.IPNet
@@ -39,6 +42,23 @@ func isPrivateIP(ip net.IP) bool {
 	return false
 }
 
+func ipToInt(ip net.IP) uint32 {
+	if len(ip) == 16 {
+		return binary.BigEndian.Uint32(ip[12:16])
+	}
+	return binary.BigEndian.Uint32(ip)
+}
+
 func main() {
 	fmt.Println(isPrivateIP(net.ParseIP("172.28.4.60")))
+	fmt.Println(ipToInt(net.ParseIP("2409:8a34:7101:330c:20bf:688f:285f:5b76")))
+	fmt.Println(ipToInt(net.ParseIP("172.28.4.60")))
+
+	ipNum, err := ipv4.FromDots("172.28.4.60")
+
+	if err != nil {
+		panic(err)
+	}
+
+	fmt.Println("ip v4 to int", ipNum)
 }
