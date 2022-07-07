@@ -1,0 +1,4 @@
+github.com/dustin/go-humanize v1.0.0 h1:VSnTsYCnlFHaM2/igO1h6X3HA71jcobQuxemgkq4zYo=
+github.com/dustin/go-humanize v1.0.0/go.mod h1:HtrtbFcZ19U5GC7JDqmcUSB87Iq5E25KnS6fMYU6eOk=
+github.com/mritd/chinaid v1.0.2 h1:16YuIbvrQ8aPO6WeJaGb4j2ymdb2aI0Ljn7Vkyfffeg=
+github.com/mritd/chinaid v1.0.2/go.mod h1:YybnKRMh6Wv9IqkE8ZtRi9Hn3QtrfrGH0TWLLTjS2nc=
