@@ -2,6 +2,8 @@
 
 Some golang learning examples by experiment code
 
+En | [中文](./README_zh-CN.md)
+
 ## Table of Contents
 
 - [algorithm](./algorithm/)
