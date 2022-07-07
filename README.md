@@ -1,2 +1,2 @@
 # go-experiments
-some golang experiments
+some golang learning examples by experiment code
