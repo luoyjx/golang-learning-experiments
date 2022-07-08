@@ -7,7 +7,7 @@ import (
 )
 
 func main() {
-	url := "http://shimo.f3322.net:3000/static/files/蔡诗 音(名字带空格).doc"
+	url := "http://localhost:3000/static/files/蔡诗 音(名字带空格).doc"
 	resp, err := http.Get(url)
 	if err != nil {
 		panic(err)
