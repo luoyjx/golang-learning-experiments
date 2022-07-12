@@ -41,6 +41,11 @@ func main() {
 	printIntBase16LowerCase()
 	printIntBase16UpperCase()
 	printIntUnicodeFormat()
+	fmt.Println("String and slice of bytes ===========================")
+	printStringNormal()
+	printStringDoubleQuoted()
+	printStringBase16Lower()
+	printStringBase16Upper()
 }
 
 func printAsDefaultStructFormat(f Foo) {
@@ -143,4 +148,32 @@ func printIntUnicodeFormat() {
 	// print:
 	// int unicode format: U+0064
 	fmt.Printf("int unicode format: %U\n", 100)
+}
+
+func printStringNormal() {
+	// print:
+	// string normal: abc
+	fmt.Printf("string normal: %s\n", "abc")
+
+	// print:
+	// string normal: abc
+	fmt.Printf("string normal: %s\n", []byte("abc"))
+}
+
+func printStringDoubleQuoted() {
+	// print:
+	// string double quoted: "abc"
+	fmt.Printf("string double quoted: %q\n", "abc")
+}
+
+func printStringBase16Lower() {
+	// print:
+	// string base 16 lower: 616263
+	fmt.Printf("string base 16 lower: %x\n", "abc")
+}
+
+func printStringBase16Upper() {
+	// print:
+	// string base 16 upper: 616263
+	fmt.Printf("string base 16 upper: %X\n", "abc")
 }
