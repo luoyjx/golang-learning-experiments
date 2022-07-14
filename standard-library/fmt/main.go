@@ -46,6 +46,10 @@ func main() {
 	printStringDoubleQuoted()
 	printStringBase16Lower()
 	printStringBase16Upper()
+	fmt.Println("Slice ============================")
+	printSlice()
+	fmt.Println("Pointer ===========================")
+	printPointer()
 }
 
 func printAsDefaultStructFormat(f Foo) {
@@ -176,4 +180,16 @@ func printStringBase16Upper() {
 	// print:
 	// string base 16 upper: 616263
 	fmt.Printf("string base 16 upper: %X\n", "abc")
+}
+
+func printSlice() {
+	// print some thing like:
+	// slice: 0xc0000cc060
+	fmt.Printf("slice: %p\n", []int{1, 2, 3})
+}
+
+func printPointer() {
+	// print something like:
+	// pointer: 0xc0000cc060
+	fmt.Printf("pointer: %p\n", &[]int{1, 2, 3})
 }
