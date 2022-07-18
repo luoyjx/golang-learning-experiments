@@ -50,6 +50,13 @@ func main() {
 	printSlice()
 	fmt.Println("Pointer ===========================")
 	printPointer()
+	fmt.Println("Float ============================")
+	printDecimallessScientificNotation()
+	printScientificNotationLower()
+	printScientificNotationUpper()
+	printDecimalPoint()
+	printHexadecimalNotation()
+	printUpperHexadecimalNotation()
 }
 
 func printAsDefaultStructFormat(f Foo) {
@@ -192,4 +199,40 @@ func printPointer() {
 	// print something like:
 	// pointer: 0xc0000cc060
 	fmt.Printf("pointer: %p\n", &[]int{1, 2, 3})
+}
+
+func printDecimallessScientificNotation() {
+	// print:
+	// decimalless scientific notation: -1111011
+	fmt.Printf("decimalless scientific notation: %b\n", -123)
+}
+
+func printScientificNotationLower() {
+	// print:
+	// scientific notation lower: -1.234568e+05
+	fmt.Printf("scientific notation lower: %e\n", -123456.789)
+}
+
+func printScientificNotationUpper() {
+	// print:
+	// scientific notation upper: -1.234568E+05
+	fmt.Printf("scientific notation upper: %E\n", -123456.789)
+}
+
+func printDecimalPoint() {
+	// print:
+	// decimal point: 123.456000
+	fmt.Printf("decimal point: %f\n", 123.456)
+}
+
+func printHexadecimalNotation() {
+	// print:
+	// hexadecimal notation: 186a0
+	fmt.Printf("hexadecimal notation: %x\n", 100000)
+}
+
+func printUpperHexadecimalNotation() {
+	// print:
+	// upper hexadecimal notation: 186A0
+	fmt.Printf("upper hexadecimal notation: %X\n", 100000)
 }
