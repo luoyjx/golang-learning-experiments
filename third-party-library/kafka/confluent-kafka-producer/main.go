@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-
 	"time"
 
 	"github.com/confluentinc/confluent-kafka-go/kafka"
@@ -14,9 +13,11 @@ type Producer struct {
 }
 
 func NewProducer() *Producer {
-	p, err := kafka.NewProducer(&kafka.ConfigMap{
-		"bootstrap.servers": "localhost:9092",
-	})
+	p, err := kafka.NewProducer(
+		&kafka.ConfigMap{
+			"bootstrap.servers": "localhost:9092",
+		},
+	)
 
 	if err != nil {
 		panic(err)
@@ -34,8 +35,10 @@ func NewProducer() *Producer {
 					if m.TopicPartition.Error != nil {
 						fmt.Printf("Delivery failed: %v\n", m.TopicPartition.Error)
 					} else {
-						fmt.Printf("Delivered message to topic %s [%d] at offset %v\n",
-							*m.TopicPartition.Topic, m.TopicPartition.Partition, m.TopicPartition.Offset)
+						fmt.Printf(
+							"Delivered message to topic %s [%d] at offset %v\n",
+							*m.TopicPartition.Topic, m.TopicPartition.Partition, m.TopicPartition.Offset,
+						)
 					}
 				default:
 					// fmt.Printf("Ignored event: %s\n", ev)
