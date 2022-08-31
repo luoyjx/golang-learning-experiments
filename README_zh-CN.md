@@ -15,6 +15,9 @@
     - [confluent-kafka-producer](third-party-library/kafka/confluent-kafka-producer)
   - [日志](third-party-library/logging)
     - [logrus](third-party-library/logging/logrus-demo)
+      - [基本使用](third-party-library/logging/logrus-demo/basic.go)
+      - [使用内置的 writer 添加 hook](third-party-library/logging/logrus-demo/builtin_writer_hook.go)
+      - [实现自定义 formatter](third-party-library/logging/logrus-demo/custom_formatter.go)
   - MIME
     - [h2non/filetype](third-party-library/mime-demo)
   - [minio](third-party-library/minio-demo)
