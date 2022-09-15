@@ -10,6 +10,7 @@
 - [标准语法](./standard-syntax/)
 - [标准库](./standard-library/)
 - [第三方库](./third-party-library/)
+  - [错误处理](./third-party-library/error-handling)
   - [HTTP 服务器](third-party-library/http-servers/)
   - [Kafka](third-party-library/kafka)
     - [confluent-kafka-producer](third-party-library/kafka/confluent-kafka-producer)
