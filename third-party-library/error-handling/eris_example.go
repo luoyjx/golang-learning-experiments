@@ -43,4 +43,7 @@ func main() {
 	jsonErr := eris.ToJSON(err, true)
 	jsonStr, _ := json.Marshal(jsonErr)
 	fmt.Printf("%v\n", string(jsonStr))
+
+	formattedStr := eris.ToString(err, true)
+	fmt.Println(formattedStr)
 }
