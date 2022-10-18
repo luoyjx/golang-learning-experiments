@@ -1,9 +1,10 @@
 package main
 
 import (
+	"context"
 	"encoding/json"
 
-	"github.com/go-redis/redis/v7"
+	"github.com/go-redis/redis/v8"
 )
 
 func main() {
@@ -18,5 +19,5 @@ func main() {
 
 	bs, _ := json.Marshal(p)
 
-	redisClient.Publish("MODEL", bs)
+	redisClient.Publish(context.Background(), "MODEL", bs)
 }
