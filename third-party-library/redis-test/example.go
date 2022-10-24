@@ -9,6 +9,8 @@ import (
 )
 
 func main() {
+	_ = newSentinelClient()
+	getSet()
 	publish()
 }
 
