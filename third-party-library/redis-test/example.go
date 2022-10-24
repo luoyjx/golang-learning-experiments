@@ -17,6 +17,16 @@ func newClient() *redis.Client {
 	return redis.NewClient(&redis.Options{})
 }
 
+func newSentinelClient() *redis.Client {
+	// use default redis options
+	return redis.NewFailoverClient(
+		&redis.FailoverOptions{
+			MasterName:    "mymaster",
+			SentinelAddrs: []string{":26379", ":26380", ":26381"},
+		},
+	)
+}
+
 func getSet() {
 	redisClient := newClient()
 
