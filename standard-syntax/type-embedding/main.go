@@ -32,6 +32,14 @@ func (b *Foo) PutSomething() {
 	fmt.Println("foo put")
 }
 
+type Bar struct {
+	*Base
+}
+
+func (b *Bar) PutSomething() {
+	fmt.Println("bar put")
+}
+
 func main() {
 	lib := &libImpl{}
 	foo := &Foo{
@@ -40,4 +48,11 @@ func main() {
 
 	foo.PutSomething()
 	foo.GetSomething()
+
+	bar := &Bar{
+		Base: &Base{LibClient: lib},
+	}
+
+	bar.GetSomething()
+	bar.PutSomething()
 }
