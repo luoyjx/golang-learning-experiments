@@ -1,1 +1,0 @@
-{"level":"info","ts":1679197356.295447,"caller":"basic/custom.go:38","msg":"This is a custom zap logger with a local file output writer."}
