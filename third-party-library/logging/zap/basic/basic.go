@@ -1,3 +1,5 @@
+package main
+
 // Import necessary packages
 import (
 	"go.uber.org/zap"
