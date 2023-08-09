@@ -2,8 +2,6 @@
 
 Some golang learning examples by experiment code
 
-En | [中文](./README_zh-CN.md)
-
 ## Table of Contents
 
 - [algorithm](./algorithm/)
@@ -19,8 +17,12 @@ En | [中文](./README_zh-CN.md)
       - [basic usage](third-party-library/logging/logrus-demo/basic.go)
       - [hook with built-in writer](third-party-library/logging/logrus-demo/builtin_writer_hook.go)
       - [custom formatter](third-party-library/logging/logrus-demo/custom_formatter.go)
+    - [zap](third-party-library/logging/zap)
   - MIME
     - [h2non/filetype](third-party-library/mime-demo)
   - [minio](third-party-library/minio-demo)
   - Redis Client
     - [go-redis](third-party-library/redis-demo)
+    - [go-redis cache demo](third-party-library/go-redis-cache)
+  - MinIO Client
+    - [demo](third-party-library/minio-demo)
