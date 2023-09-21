@@ -5,6 +5,8 @@ Some golang learning examples by experiment code
 ## Table of Contents
 
 - [algorithm](./algorithm/)
+- [data-structure](./data-structure/)
+  - [Sets](./data-structure/sets/)
 - [standard syntax](./standard-syntax/)
 - [standard library](./standard-library/)
 - [third-party library](./third-party-library/)
