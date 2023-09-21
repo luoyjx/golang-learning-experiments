@@ -12,6 +12,7 @@ Some golang learning examples by experiment code
   - [HTTP Servers](third-party-library/http-servers/)
   - [Kafka](third-party-library/kafka)
     - [confluent-kafka-producer](third-party-library/kafka/confluent-kafka-producer)
+    - [confluent-kafka-consumer](third-party-library/kafka/confluent-kafka-consumer)
   - [logging](third-party-library/logging)
     - [logrus](third-party-library/logging/logrus-demo)
       - [basic usage](third-party-library/logging/logrus-demo/basic.go)
